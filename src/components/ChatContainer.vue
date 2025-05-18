@@ -11,10 +11,11 @@
 <script>
 import Message from './Message.vue'
 
+
 export default {
   name: 'ChatContainer',
   components: {
-    Message
+    Message,
   },
   props: {
     messages: {
