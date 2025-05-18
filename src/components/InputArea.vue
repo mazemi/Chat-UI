@@ -4,17 +4,13 @@
       <textarea
         ref="textarea"
         v-model="localInput"
-        placeholder="Type your message..."
+        placeholder="Ask me something ..."
         @keydown.enter.exact.prevent="handleSubmit"
         @keydown.shift.enter="handleNewLine"
         @input="adjustHeight"
         rows="1"
       ></textarea>
-      <!-- <button type="submit">Send</button> -->
     </form>
-    <div class="hint-text">
-      <!-- <small>Press Enter to send, Shift+Enter for new line</small> -->
-    </div>
   </div>
 </template>
 
@@ -73,7 +69,7 @@ export default {
 
 <style scoped>
 .input-area {
-  padding: 15px;
+  padding: 5px;
   border-top: 1px solid #bdc3c7;
   background-color: white;
 }
@@ -85,31 +81,17 @@ export default {
 
 .input-area textarea {
   flex: 1;
-  padding: 10px 15px;
-  border: 1px solid #bdc3c7;
+  padding: 10px 10px;
+  /* border: 1px solid #bdc3c7; */
+  border-style: none;
   border-radius: 10px;
   outline: none;
   resize: none;
-  min-height: 44px;
-  max-height: 200px;
-  line-height: 1.4;
+  min-height: 33px;
+  max-height: 65px;
+  line-height: 1;
   font-family: inherit;
   overflow-y: auto;
-}
-
-.input-area button {
-  margin-left: 10px;
-  padding: 10px 20px;
-  background-color: #3498db;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  height: 44px;
-}
-
-.input-area button:hover {
-  background-color: #2980b9;
 }
 
 .hint-text {

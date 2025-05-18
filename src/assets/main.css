@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+body {
+  font-size: 0.9em; /* or use 14px, 90%, etc. */
+}
+
 ol, ul {
     list-style: none;
 }

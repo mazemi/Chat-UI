@@ -47,7 +47,7 @@ export default {
 .message-avatar {
   width: 40px;
   height: 40px;
-  background-color: #eceef0;
+  background-color: #5d98d3;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -63,14 +63,14 @@ export default {
 
 .user-message .message-avatar {
   background-color: #3498db;
-  color: white;
+  color: rgb(236, 237, 238);
   margin-right: 0;
   margin-left: 10px;
 }
 
 .user-message .message-text {
-  background-color: #3498db;
-  color: white;
+  background-color: #f7f7f7;
+  color: rgb(92, 92, 92);
 }
 
 .assistant-message .message-avatar {

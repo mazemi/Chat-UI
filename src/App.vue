@@ -33,10 +33,8 @@ export default {
       userInput: '',
       chatHistory: [
         {
-          title: 'First Chat',
-          messages: [
-            { role: 'assistant', content: 'Hello! How can I assist you today?' }
-          ]
+          title: 'Chat 1',
+          messages: []
         }
       ],
       activeChat: 0
@@ -68,9 +66,7 @@ export default {
     newChat() {
       this.chatHistory.push({
         title: `Chat ${this.chatHistory.length + 1}`,
-        messages: [
-          { role: 'assistant', content: 'Hello! How can I assist you today?' }
-        ]
+        messages: []
       })
       this.activeChat = this.chatHistory.length - 1
     },
@@ -92,6 +88,6 @@ export default {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #f8f8f8;
+  /* background-color: #f8f8f8; */
 }
 </style>

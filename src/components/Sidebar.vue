@@ -15,11 +15,23 @@
         {{ chat.title || `Chat ${index + 1}` }}
       </div>
     </div>
+
+    <div class="user-tools">
+      <font-awesome-icon icon="gear" />
+      <span class="tools-label">Setting</span>
+    </div>
+
+    <div class="user-tools">
+      <font-awesome-icon icon="share" />
+      <span class="tools-label">Share</span>
+    </div>
+
     <div class="user-profile" @click="toggleProfilePopup">
       <div class="avatar">U</div>
       <span class="username">User</span>
       
       <div v-if="showProfilePopup" class="profile-popup">
+        <!-- hard coded for now as REACH user -->
         <div class="popup-content">
           <div class="popup-header">
             <div class="popup-avatar">R</div>
@@ -70,7 +82,7 @@ export default {
 .sidebar {
   width: 250px;
   background-color: #2c3e50;
-  color: white;
+  color: rgb(203, 205, 207);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -87,12 +99,12 @@ export default {
 }
 
 .new-chat-btn {
-  width: 100%;
+  width: 70%;
   padding: 8px;
   background-color: #3498db;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 20px;
   cursor: pointer;
 }
 
@@ -107,8 +119,8 @@ export default {
 }
 
 .chat-item {
-  padding: 10px;
-  margin: 5px 0;
+  padding: 8px;
+  margin: 3px 0;
   border-radius: 4px;
   cursor: pointer;
   white-space: nowrap;
@@ -116,12 +128,9 @@ export default {
   text-overflow: ellipsis;
 }
 
-.chat-item:hover {
-  background-color: #34495e;
-}
-
 .chat-item.active {
-  background-color: #3498db;
+
+  text-decoration: underline;
 }
 
 .user-profile {
@@ -135,6 +144,23 @@ export default {
 
 .user-profile:hover {
   background-color: #34495e;
+}
+
+.user-tools {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #34495e;
+  cursor: pointer;
+  position: relative;
+}
+
+/* .user-tools:hover {
+  background-color: #34495e;
+} */
+
+.tools-label{
+  padding-left: 10px;
 }
 
 .avatar {
