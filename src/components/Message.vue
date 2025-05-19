@@ -4,9 +4,10 @@
       <div class="message-avatar">
         {{ avatarText }}
       </div>
-      <div class="message-text">
+      <div class="message-text" v-if="!isHtml">
         {{ message.content }}
       </div>
+      <div class="message-text" v-else v-html="message.content"></div>
     </div>
   </div>
 </template>
@@ -21,11 +22,17 @@ export default {
     }
   },
   computed: {
-    messageClass() {
+  messageClass() {
       return {
         'user-message': this.message.role === 'user',
         'assistant-message': this.message.role === 'assistant'
       }
+    },
+    avatarText() {
+      return this.message.role === 'user' ? 'U' : 'AI'
+    },
+    isHtml() {
+      return this.message.role === 'assistant' && this.message.content.startsWith('<')
     },
     avatarText() {
       return this.message.role === 'user' ? 'U' : 'AI'

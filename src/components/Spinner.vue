@@ -13,7 +13,7 @@ defineProps({
 <style scoped>
 .grow-spinner {
   display: inline-block;
-  background-color: #9a9c9e; /* Bootstrap blue */
+  background-color: #7a7b7c; /* Bootstrap blue */
   border-radius: 50%;
   opacity: 0;
   animation: growFade 1s infinite ease-in-out;

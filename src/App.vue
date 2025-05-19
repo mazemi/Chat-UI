@@ -67,7 +67,7 @@ export default {
     this.isLoading = true;
 
     try {
-      const response = await fetch('http://localhost:8000/api/chat', {
+      const response = await fetch('http://127.0.0.1:8000/api/query', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -85,7 +85,8 @@ export default {
 
       this.currentChat.messages.push({
         role: 'assistant',
-        content: data.response
+        // content: data.response
+        content: data.html || 'No data returned.'
       });
     } catch (error) {
       this.currentChat.messages.push({
