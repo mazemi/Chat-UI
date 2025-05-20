@@ -91,7 +91,7 @@ export default {
     } catch (error) {
       this.currentChat.messages.push({
         role: 'assistant',
-        content: 'Error: Could not connect to AI backend.'
+        content: 'Sorry, I din\'t fully understand your query.'
       });
       console.error(error);
     } finally {
