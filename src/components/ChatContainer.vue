@@ -51,4 +51,5 @@ export default {
   padding: 20px;
   overflow-y: auto;
 }
+
 </style>

@@ -93,5 +93,7 @@ export default {
   padding: 10px 15px;
   border-radius: 18px;
   word-wrap: break-word;
+  overflow-x: auto;
+  max-width: 100%;
 }
 </style>

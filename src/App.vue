@@ -132,4 +132,23 @@ export default {
   justify-content: center;
   padding: 1rem;
 }
+
+.message-text table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+  font-size: 14px;
+}
+
+.message-text th,
+.message-text td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.message-text th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
 </style>
