@@ -5,6 +5,7 @@
       :activeChat="activeChat"
       @new-chat="newChat"
       @load-chat="loadChat"
+      @model-change="setModel"
     />
     <div class="main-container">
       <ChatContainer :messages="currentChat.messages" />
@@ -39,6 +40,7 @@ export default {
     return {
       userInput: '',
       isLoading: false,
+      selectedModel: 'local',
       chatHistory: [
         {
           title: 'Chat 1',
@@ -54,50 +56,65 @@ export default {
     }
   },
   methods: {
+    setModel(model) {
+      this.selectedModel = model
+      console.log(model)
+    },
+
+
     async sendMessage(message) {
-    if (!message.trim()) return;
-
-    // Add user message to chat
-    this.currentChat.messages.push({
-      role: 'user',
-      content: message
-    });
-
-    this.userInput = '';
-    this.isLoading = true;
-
-    try {
-      const response = await fetch('http://127.0.0.1:8000/api/query', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          prompt: message
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to get response from backend.');
-      }
-
-      const data = await response.json();
+      if (!message.trim()) return;
 
       this.currentChat.messages.push({
-        role: 'assistant',
-        // content: data.response
-        content: data.html || 'No data returned.'
+        role: 'user',
+        content: message
       });
-    } catch (error) {
-      this.currentChat.messages.push({
-        role: 'assistant',
-        content: 'Sorry, I din\'t fully understand your query.'
-      });
-      console.error(error);
-    } finally {
+
+      this.userInput = '';
+      this.isLoading = true;
+
+      const payload = {
+        prompt: message,
+        model: this.selectedModel
+      };
+
+      console.log("Request Payload:", payload);
+      
+      try {
+        const response = await fetch('http://127.0.0.1:8000/api/query', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            prompt: message,
+            model: this.selectedModel 
+          })
+        });
+        
+        
+
+        if (!response.ok) {
+          throw new Error('Failed to get response from backend.');
+        }
+
+        const data = await response.json();
+
+        this.currentChat.messages.push({
+          role: 'assistant',
+          content: data.html || 'No data returned.'
+        });
+      } catch (error) {
+        this.currentChat.messages.push({
+          role: 'assistant',
+          content: 'Sorry, I didn\'t fully understand your query.'
+        });
+        console.error(error);
+      } finally {
         this.isLoading = false;
       }
-  },
+    },
+
   newChat() {
     this.chatHistory.push({
       title: `Chat ${this.chatHistory.length + 1}`,

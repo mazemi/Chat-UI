@@ -1,9 +1,21 @@
 <template>
   <div class="sidebar">
+
+    <div class="Model">
+      <label for="AIModel">Model:</label>
+
+      <select id="AIModel" name="AIModel" v-model="selectedModel" @change="modelChanged">
+        <option value="local">Local llama3.2</option>
+        <option value="openai">OpenAI gpt-4o-mini</option>
+      </select>
+    </div>
+
     <div class="sidebar-header">
       <h2>Chat History</h2>
       <button @click="$emit('new-chat')" class="new-chat-btn">+ New Chat</button>
     </div>
+
+
     <div class="chat-history">
       <div 
         v-for="(chat, index) in chatHistory" 
@@ -67,10 +79,18 @@ export default {
   },
   data() {
     return {
+      showProfilePopup: false,
+      selectedModel: 'local',
       showProfilePopup: false
     }
   },
   methods: {
+    toggleProfilePopup() {
+      this.showProfilePopup = !this.showProfilePopup
+    },
+    modelChanged() {
+      this.$emit('model-change', this.selectedModel)
+    },
     toggleProfilePopup() {
       this.showProfilePopup = !this.showProfilePopup
     }
@@ -129,10 +149,9 @@ export default {
   text-overflow: ellipsis;
 }
 
-/* .chat-item.active {
-   text-decoration: underline; 
-} */
-
+.chat-item:hover {
+  bac
+}
 .user-tools {
   padding: 15px;
   display: flex;
@@ -244,5 +263,39 @@ export default {
   border-width: 10px 10px 0;
   border-style: solid;
   border-color: #ffffff transparent transparent;
+}
+
+.Model {
+  padding: 15px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #d0d2d4;
+  background-color: #fff;
+}
+
+.Model label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+.Model select {
+  padding: 4px 10px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  background-color: #fefefe;
+  font-size: .9rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  min-width: 200px;
+}
+
+.Model select:hover {
+  border-color: #4a90e2;
+}
+
+.Model select:focus {
+  outline: none;
+  border-color: #357ab8;
+  box-shadow: 0 0 5px rgba(53, 122, 184, 0.6);
 }
 </style>
