@@ -3,7 +3,6 @@
 
     <div class="Model">
       <label for="AIModel">Model:</label>
-
       <select id="AIModel" name="AIModel" v-model="selectedModel" @change="modelChanged">
         <option value="local">Local llama3.2</option>
         <option value="openai">OpenAI gpt-4o-mini</option>
@@ -11,10 +10,9 @@
     </div>
 
     <div class="sidebar-header">
-      <h2>Chat History</h2>
       <button @click="$emit('new-chat')" class="new-chat-btn">+ New Chat</button>
+      <h4>Chat History</h4>
     </div>
-
 
     <div class="chat-history">
       <div 
@@ -29,13 +27,13 @@
     </div>
 
     <div class="user-tools">
-      <font-awesome-icon icon="gear" />
-      <span class="tools-label">Setting</span>
+      <font-awesome-icon icon="share" />
+      <!-- <span class="tools-label">Share</span> -->
     </div>
 
     <div class="user-tools">
-      <font-awesome-icon icon="share" />
-      <span class="tools-label">Share</span>
+      <font-awesome-icon icon="gear" />
+      <!-- <span class="tools-label">Setting</span> -->
     </div>
 
     <div class="user-profile" @click="toggleProfilePopup">
@@ -106,21 +104,22 @@ export default {
   display: flex;
   flex-direction: column;
   position: relative;
-  border-right: 1px solid #d0d2d4;
+  border-right: 1px solid #ebeced;
 }
 
 .sidebar-header {
-  padding: 15px;
-  border-bottom: 1px solid #e0e0e0;
+  padding: 15px 15px 10px 15px;
+  border-bottom: 1px solid #ebeced;
 }
 
-.sidebar-header h2 {
+.sidebar-header h4 {
   margin: 0 0 10px 0;
-  font-size: 1.2rem;
+  margin: 10px 10px 0 0;
+  font-size: .9rem;
 }
 
 .new-chat-btn {
-  width: 70%;
+  width: 50%;
   padding: 8px;
   background-color: #4a90e2;
   color: #fff;
@@ -147,33 +146,41 @@ export default {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: .8rem;
 }
 
 .chat-item:hover {
-  bac
+  background-color:#f6f6f6;
 }
+
+.chat-item.active{
+  background-color:#edecec;
+}
+
 .user-tools {
-  padding: 15px;
+  padding: 10px;
+  padding-left: 20px;
   display: flex;
   align-items: center;
-  border-top: 1px solid #d0d2d4;
+  /* border-top: 1px solid #ebeced; */
   cursor: pointer;
   position: relative;
+  color: #666667;
 }
 
-.user-tools:hover {
+/* .user-tools:hover {
   background-color: #eaeaea;
-}
+} */
 
 .tools-label {
-  padding-left: 10px;
+  padding-left: .8rem;
 }
 
 .user-profile {
   padding: 15px;
   display: flex;
   align-items: center;
-  border-top: 1px solid #d0d2d4;
+  border-top: 1px solid #ebeced;
   cursor: pointer;
   position: relative;
 }
@@ -268,8 +275,8 @@ export default {
 .Model {
   padding: 15px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #d0d2d4;
-  background-color: #fff;
+  border-bottom: 1px solid #ebeced;
+  /* background-color: #fff; */
 }
 
 .Model label {
@@ -279,10 +286,9 @@ export default {
 }
 
 .Model select {
-  padding: 4px 10px;
+  padding: 7px 10px;
   border-radius: 3px;
-  border: 1px solid #ccc;
-  background-color: #fefefe;
+  border: 1px solid #ebeced;
   font-size: .9rem;
   cursor: pointer;
   transition: border-color 0.2s ease;
@@ -290,12 +296,12 @@ export default {
 }
 
 .Model select:hover {
-  border-color: #4a90e2;
+  border-color: #c1c2c4;
 }
 
 .Model select:focus {
   outline: none;
-  border-color: #357ab8;
-  box-shadow: 0 0 5px rgba(53, 122, 184, 0.6);
+  border-color: #dddedf;
+  box-shadow: 0 0 5px rgba(209, 210, 211, 0.6);
 }
 </style>

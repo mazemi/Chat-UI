@@ -70,7 +70,7 @@ export default {
 <style scoped>
 .input-area {
   padding: 5px;
-  border-top: 1px solid #bdc3c7;
+  border-top: 1px solid #e3e5e6;
   background-color: white;
 }
 
